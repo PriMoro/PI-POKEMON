@@ -1,15 +1,8 @@
 const { Router } = require("express");
-//const pokemons = require("./get_pokemons.js");
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
-
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
+const getAll = require("../controllers/pokemons/all");
 const router = Router();
 
-const getAll = require("../controllers/pokemons/all");
-
-router.get("/pokemons", async (req, res) => {
+router.get("/", async (req, res) => {
   const { name } = req.query;
   const allPokemons = await getAll();
   if (name) {
@@ -21,7 +14,7 @@ router.get("/pokemons", async (req, res) => {
     res.send(allPokemons);
   }
 });
-router.get("/pokemons/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   const { id } = req.params;
   const allPokemons2 = await getAll();
   if (id) {
@@ -29,7 +22,3 @@ router.get("/pokemons/:id", async (req, res) => {
     filtered.length ? res.send(filtered) : res.status(404).send("id not found");
   }
 });
-
-//router.use("/pokemons", pokemons);
-
-module.exports = router;
