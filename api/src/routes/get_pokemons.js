@@ -22,3 +22,4 @@ router.get("/:id", async (req, res) => {
     filtered.length ? res.send(filtered) : res.status(404).send("id not found");
   }
 });
+module.exports = router;
