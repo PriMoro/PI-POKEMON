@@ -47,32 +47,60 @@ router.post("/", async (req, res) => {
     type,
   } = req.body;
   try {
+    if (!name || typeof name !== "string") {
+      res
+        .status(400)
+        .send(
+          "Remember that the name must be a avaliable name. Please don´t try to crash my page"
+        );
+    }
     if (name && typeof name === "string") {
-      let pokeCreated = await Pokemon.create({
-        name,
-        img,
-        hp,
-        attack,
-        defense,
-        speed,
-        height,
-        weight,
-        ifWasCreated,
-      });
-      let pokeType = await Type.findAll({ where: { name: type } });
-      //pokeType = pokeType.map((e) => e.name);
-      // let pt = pokeType.map((el) => {
-      //   for (let i = 0; i < el.length; i++) {
-      //     return el[i.name];
-      //   }
-      // });
-      pokeCreated.addType(pokeType);
-      res.send("poke created successfully");
+      if (
+        hp < 101 &&
+        hp > 0 &&
+        attack < 101 &&
+        attack > 0 &&
+        defense > 0 &&
+        defense < 101 &&
+        speed > 0 &&
+        speed < 101 &&
+        height > 0 &&
+        height < 101 &&
+        weight > 0 &&
+        weight < 101
+      ) {
+        let pokeCreated = await Pokemon.create({
+          name,
+          img,
+          hp,
+          attack,
+          defense,
+          speed,
+          height,
+          weight,
+          ifWasCreated,
+        });
+        let pokeType = await Type.findAll({ where: { name: type } });
+        //pokeType = pokeType.map((e) => e.name);
+        // let pt = pokeType.map((el) => {
+        //   for (let i = 0; i < el.length; i++) {
+        //     return el[i.name];
+        //   }
+        // });
+        pokeCreated.addType(pokeType);
+        res.send("poke created successfully");
+      } else {
+        res
+          .status(404)
+          .send(
+            "Please, insert avaliable values only. The values can not be greater than 100, and must be numbers"
+          );
+      }
     } else {
-      res.status(404).send("all fields are required");
+      res.status(404).send("All fields are required");
     }
   } catch (err) {
-    res.status(404).send(err);
+    res.status(400).send(err);
   }
 });
 module.exports = router;
