@@ -1,6 +1,7 @@
 export const GET_POKEMONS = "GET_POKEMONS";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const ORDER_BY_ATTACK = "ORDER_BY_ATTACK";
+export const FILTER_API_DB = "FILTER_API_DB";
 export function getPokes() {
   return (dispatch) => {
     return fetch("http://localhost:3001/pokemons")
@@ -13,4 +14,7 @@ export function orderByName(payload) {
 }
 export function orderByAttack(payload) {
   return { type: ORDER_BY_ATTACK, payload };
+}
+export function filterApiOrDb(payload) {
+  return { type: FILTER_API_DB, payload };
 }
