@@ -3,6 +3,8 @@ import {
   ORDER_BY_NAME,
   ORDER_BY_ATTACK,
   FILTER_API_DB,
+  FILTER_TYPES,
+  SEARCH_POKE,
 } from "../actions";
 let initialState = {
   pokemons: [],
@@ -16,6 +18,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         pokemons: action.payload,
         pokemonsCopy: action.payload, //? --> se llena un auxiliar del estado
+      };
+    case SEARCH_POKE:
+      return {
+        ...state,
+        pokemons: action.payload,
       };
     case ORDER_BY_NAME:
       const sortedName =
@@ -73,6 +80,13 @@ export default function rootReducer(state = initialState, action) {
           ? all.filter((p) => p.ifWasCreated === true)
           : all.filter((p) => !p.ifWasCreated);
       return { ...state, pokemons: filtered };
+    case FILTER_TYPES:
+      const all2 = state.pokemonsCopy;
+      const all3 = all2.filter((p) => p.type === action.payload);
+      return {
+        ...state,
+        pokemons: all3,
+      };
     default:
       return { ...state };
   }

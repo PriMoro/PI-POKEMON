@@ -2,12 +2,14 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   filterApiOrDb,
+  filterTypes,
   getPokes,
   orderByAttack,
   orderByName,
 } from "../actions";
 import Pagination from "./Pagination";
 import Pokemon from "./Pokemon";
+import SearchBar from "./SearchBar";
 
 function Home() {
   const dispatch = useDispatch();
@@ -54,11 +56,18 @@ function Home() {
     setCurrentPage(1);
     setOrder(`filtered ${e.target.value}`);
   }
+  function handleFilterTypes(e) {
+    e.preventDefault();
+    dispatch(filterTypes(e.target.value));
+    setCurrentPage(1);
+    setOrder(`filtered ${e.target.value}`);
+  }
   return (
     <React.Fragment>
       <div>Home</div>
       <button onClick={(e) => handleClick(e)}>Show all Pokemons again</button>
       <div>
+        <SearchBar />
         <>Order by Name </>
         <select onChange={(e) => handleOrderName(e)}>
           <option value="top">Upward</option>
@@ -74,6 +83,29 @@ function Home() {
           <option value="all">All</option>
           <option value="api">Existing</option>
           <option value="db">Created</option>
+        </select>
+        <> Types </>
+        <select onChange={(e) => handleFilterTypes(e)}>
+          <option value="normal">Normal</option>
+          <option value="fighting">Fighting</option>
+          <option value="fire">Fire</option>
+          <option value="flying">Flying</option>
+          <option value="poison">Poison</option>
+          <option value="ground">Ground</option>
+          <option value="rock">Rock</option>
+          <option value="bug">Bug</option>
+          <option value="ghost">Ghost</option>
+          <option value="steel">Steel</option>
+          <option value="water">Water</option>
+          <option value="grass">Grass</option>
+          <option value="electric">Electric</option>
+          <option value="physic">Psychic</option>
+          <option value="ice">Ice</option>
+          <option value="shadow">Shadow</option>
+          <option value="dragon">Dragon</option>
+          <option value="dark">Dark</option>
+          <option value="fairy">Fairy</option>
+          <option value="unknown">Unknown</option>
         </select>
       </div>
       <Pagination
