@@ -1,5 +1,5 @@
 import React from "react";
-
+import styles from "./Pagination.module.css";
 function Pagination({ allPokes, pagination, pokesByPage }) {
   const pageNum = [];
   for (let i = 0; i <= Math.ceil(allPokes / pokesByPage) - 1; i++) {
@@ -7,11 +7,13 @@ function Pagination({ allPokes, pagination, pokesByPage }) {
   }
   return (
     <nav>
-      <ul>
+      <ul className={styles.center}>
         {pageNum &&
           pageNum.map((num) => (
-            <li key={num}>
-              <button onClick={() => pagination(num)}>{num}</button>
+            <li className={styles.split} key={num}>
+              <button className={styles.color} onClick={() => pagination(num)}>
+                {num}
+              </button>
             </li>
           ))}
       </ul>

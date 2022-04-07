@@ -4,6 +4,7 @@ export const ORDER_BY_ATTACK = "ORDER_BY_ATTACK";
 export const FILTER_API_DB = "FILTER_API_DB";
 export const FILTER_TYPES = "FILTER_TYPES";
 export const SEARCH_POKE = "SEARCH_POKE";
+export const GET_DETAIL = "GET_DETAIL";
 export function getPokes() {
   return (dispatch) => {
     return fetch("http://localhost:3001/pokemons")
@@ -29,4 +30,11 @@ export function filterApiOrDb(payload) {
 }
 export function filterTypes(payload) {
   return { type: FILTER_TYPES, payload };
+}
+export function getDetail(id) {
+  return (dispatch) => {
+    return fetch(`http://localhost:3001/pokemons/${id}`)
+      .then((response) => response.json())
+      .then((r) => dispatch({ type: GET_DETAIL, payload: r }));
+  };
 }

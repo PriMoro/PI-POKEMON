@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   filterApiOrDb,
   filterTypes,
@@ -10,7 +11,7 @@ import {
 import Pagination from "./Pagination";
 import Pokemon from "./Pokemon";
 import SearchBar from "./SearchBar";
-
+import styles from "./Home.module.css";
 function Home() {
   const dispatch = useDispatch();
   const allPokes = useSelector((state) => state.pokemons);
@@ -64,64 +65,87 @@ function Home() {
   }
   return (
     <React.Fragment>
-      <div>Home</div>
-      <button onClick={(e) => handleClick(e)}>Show all Pokemons again</button>
+      <div className={styles.home}>Home</div>
+      <button className={styles.button} onClick={(e) => handleClick(e)}>
+        Show all
+      </button>
       <div>
         <SearchBar />
-        <>Order by Name </>
-        <select onChange={(e) => handleOrderName(e)}>
-          <option value="top">Upward</option>
-          <option value="bottom">Downward</option>
-        </select>
-        <> Order by Attack </>
-        <select onChange={(e) => handleOrderAttack(e)}>
-          <option value="top">Upward</option>
-          <option value="bottom">Downward</option>
-        </select>
-        <> Created or Existing </>
-        <select onChange={(e) => handleFilterApiDb(e)}>
-          <option value="all">All</option>
-          <option value="api">Existing</option>
-          <option value="db">Created</option>
-        </select>
-        <> Types </>
-        <select onChange={(e) => handleFilterTypes(e)}>
-          <option value="normal">Normal</option>
-          <option value="fighting">Fighting</option>
-          <option value="fire">Fire</option>
-          <option value="flying">Flying</option>
-          <option value="poison">Poison</option>
-          <option value="ground">Ground</option>
-          <option value="rock">Rock</option>
-          <option value="bug">Bug</option>
-          <option value="ghost">Ghost</option>
-          <option value="steel">Steel</option>
-          <option value="water">Water</option>
-          <option value="grass">Grass</option>
-          <option value="electric">Electric</option>
-          <option value="physic">Psychic</option>
-          <option value="ice">Ice</option>
-          <option value="shadow">Shadow</option>
-          <option value="dragon">Dragon</option>
-          <option value="dark">Dark</option>
-          <option value="fairy">Fairy</option>
-          <option value="unknown">Unknown</option>
-        </select>
+        <div className={styles.center}>
+          <div className={styles.description}>
+            <select
+              className={styles.button}
+              onChange={(e) => handleOrderName(e)}
+            >
+              <option value="top">Upward</option>
+              <option value="bottom">Downward</option>
+            </select>
+          </div>
+          <div className={styles.description}>
+            <select
+              className={styles.button}
+              onChange={(e) => handleOrderAttack(e)}
+            >
+              <option value="top">Upward</option>
+              <option value="bottom">Downward</option>
+            </select>
+          </div>
+          <div className={styles.description}>
+            <select
+              className={styles.button}
+              onChange={(e) => handleFilterApiDb(e)}
+            >
+              <option value="all">All</option>
+              <option value="api">Existing</option>
+              <option value="db">Created</option>
+            </select>
+          </div>
+          <select
+            className={styles.button}
+            onChange={(e) => handleFilterTypes(e)}
+          >
+            <option value="normal">Normal</option>
+            <option value="fighting">Fighting</option>
+            <option value="fire">Fire</option>
+            <option value="flying">Flying</option>
+            <option value="poison">Poison</option>
+            <option value="ground">Ground</option>
+            <option value="rock">Rock</option>
+            <option value="bug">Bug</option>
+            <option value="ghost">Ghost</option>
+            <option value="steel">Steel</option>
+            <option value="water">Water</option>
+            <option value="grass">Grass</option>
+            <option value="electric">Electric</option>
+            <option value="physic">Psychic</option>
+            <option value="ice">Ice</option>
+            <option value="shadow">Shadow</option>
+            <option value="dragon">Dragon</option>
+            <option value="dark">Dark</option>
+            <option value="fairy">Fairy</option>
+            <option value="unknown">Unknown</option>
+          </select>
+        </div>
       </div>
+
       <Pagination
         pokesByPage={pokesByPage}
         allPokes={allPokes.length}
         pagination={pagination}
       />
-      <div>
+      <div className={styles.pokes}>
         {currentPokesInPage?.map((poke) => {
           return (
-            <Pokemon
-              key={poke.id}
-              img={poke.img}
-              name={poke.name}
-              type={poke.type}
-            />
+            <div>
+              <Link to={`/home/${poke.id}`}>
+                <Pokemon
+                  key={poke.id}
+                  name={poke.name}
+                  img={poke.img}
+                  type={poke.type}
+                />
+              </Link>
+            </div>
           );
         })}
       </div>

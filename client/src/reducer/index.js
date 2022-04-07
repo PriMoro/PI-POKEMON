@@ -5,10 +5,12 @@ import {
   FILTER_API_DB,
   FILTER_TYPES,
   SEARCH_POKE,
+  GET_DETAIL,
 } from "../actions";
 let initialState = {
   pokemons: [],
   pokemonsCopy: [],
+  pokeDetail: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -86,6 +88,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemons: all3,
+      };
+    case GET_DETAIL:
+      return {
+        ...state,
+        pokeDetail: action.payload,
       };
     default:
       return { ...state };

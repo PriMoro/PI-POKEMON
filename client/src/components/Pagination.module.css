@@ -1,0 +1,20 @@
+.center{  
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style:none;
+}
+.split{
+margin-left: 8px;
+margin-right: 8px;
+color: brown;
+}
+.color{
+    width: 40px;
+    height: 40px;
+    background-color: yellow;
+    color: green;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+}

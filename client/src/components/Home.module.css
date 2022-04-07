@@ -1,0 +1,39 @@
+.button{
+    margin-top: 5px;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    font-size: large;
+  border-radius: 10px;
+  border-color: rgb(255, 213, 0);
+  background-color: orange;
+  color: rgb(1, 11, 20);
+}
+.pokes{
+    margin-left: 150px;
+    margin-right: 150px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 5px;
+    border-color: beige;
+}
+.home {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 50px;
+    font-style: italic;
+    background-color: aqua;
+    color: rgb(0, 255, 34);
+}
+.description{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    font-style: italic;
+    color: red
+}
+.center{  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

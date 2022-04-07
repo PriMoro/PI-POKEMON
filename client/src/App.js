@@ -1,6 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import "./App.css";
+import Detail from "./components/Detail";
 import EnterPage from "./components/EnterPage.jsx";
 import Home from "./components/Home.jsx";
 function App() {
@@ -8,7 +9,8 @@ function App() {
     <React.Fragment>
       <div className="App">
         <Route exact path={"/"} render={() => <EnterPage />}></Route>
-        <Route path={"/home"} render={() => <Home />}></Route>
+        <Route exact path={"/home"} render={() => <Home />}></Route>
+        <Route path={"/home/:id"} render={() => <Detail />}></Route>
       </div>
     </React.Fragment>
   );

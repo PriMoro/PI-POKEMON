@@ -36,4 +36,8 @@
     transform: rotate(360deg);
   }
 }
-body{background-color: orange}
+body{
+  height: 150px;
+  background-image: url("../src/images/pokemon-background.jpg");
+  background-size: 100rem;
+}
