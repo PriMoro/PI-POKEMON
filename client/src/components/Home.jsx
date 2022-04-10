@@ -69,6 +69,9 @@ function Home() {
       <button className={styles.button} onClick={(e) => handleClick(e)}>
         Show all
       </button>
+      <Link to="/create">
+        <button className={styles.button}>Create</button>
+      </Link>
       <div>
         <SearchBar />
         <div className={styles.center}>
@@ -143,6 +146,8 @@ function Home() {
                   name={poke.name}
                   img={poke.img}
                   type={poke.type}
+                  //type={poke.type.length ? poke.type : poke.types}
+                  //console.log(poke.types)
                 />
               </Link>
             </div>

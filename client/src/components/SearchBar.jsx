@@ -16,7 +16,7 @@ function SearchBar() {
       return alert("NOT");
     } else {
       dispatch(searchPoke(name));
-      // setName("");
+      setName("");
     }
   }
   return (

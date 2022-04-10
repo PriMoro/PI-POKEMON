@@ -6,20 +6,31 @@ import {
   FILTER_TYPES,
   SEARCH_POKE,
   GET_DETAIL,
+  GET_TYPES,
+  POST_POKE,
 } from "../actions";
 let initialState = {
   pokemons: [],
   pokemonsCopy: [],
   pokeDetail: [],
+  types: [],
 };
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case POST_POKE:
+      return { ...state };
+    case GET_TYPES:
+      return {
+        ...state,
+        types: action.payload,
+      };
     case GET_POKEMONS:
       return {
         ...state,
+        pokeDetail: [],
         pokemons: action.payload,
-        pokemonsCopy: action.payload, //? --> se llena un auxiliar del estado
+        pokemonsCopy: action.payload, //? --> to save an auxiliary state
       };
     case SEARCH_POKE:
       return {
@@ -84,10 +95,25 @@ export default function rootReducer(state = initialState, action) {
       return { ...state, pokemons: filtered };
     case FILTER_TYPES:
       const all2 = state.pokemonsCopy;
-      const all3 = all2.filter((p) => p.type === action.payload);
+      console.log(
+        state.pokemonsCopy.map((p) => {
+          if (p.types && Object.entries(p.types).length > 0) {
+            return p.types[0].name;
+          } else if (p.types && Object.entries(p.types).length >= 1) {
+            return p.types[0].name && p.types[1].name;
+          }
+        })
+      );
+
+      const fil = all2.filter((t) =>
+        t.type
+          ? t.type[0] === action.payload || t.type[1] === action.payload
+          : t.types
+      );
+
       return {
         ...state,
-        pokemons: all3,
+        pokemons: fil,
       };
     case GET_DETAIL:
       return {
