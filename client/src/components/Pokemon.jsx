@@ -14,6 +14,7 @@ function Pokemon({
   weight,
 }) {
   //let ty = type.map((t) => t.charAt(0).toUpperCase() + t.slice(1));
+  //console.log(types);
   return (
     <div className={styles.color}>
       <h5>{id}</h5>
@@ -24,8 +25,6 @@ function Pokemon({
           <h6>{type[0] + " " + type[1]}</h6>
         ) : type && type.length > 0 ? (
           <h6>{type[0]}</h6>
-        ) : types && Object.entries(types).length > 0 ? (
-          <h6>{types[0]}</h6>
         ) : null}
       </div>
     </div>

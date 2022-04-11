@@ -21,6 +21,7 @@ export default function rootReducer(state = initialState, action) {
     case POST_POKE:
       return { ...state };
     case GET_TYPES:
+      //console.log(action.payload);
       return {
         ...state,
         types: action.payload,
@@ -112,11 +113,10 @@ export default function rootReducer(state = initialState, action) {
       const fil = all2.filter((t) =>
         t.type
           ? t.type[0] === action.payload || t.type[1] === action.payload
-          : t.types && Object.entries(t.types).length === 1
-          ? t.types[0].name === action.payload
-          : t.types && Object.entries(t.types).length > 1
-          ? t.types[0].name === action.payload ||
-            t.types[1].name === action.payload
+          : t.types && t.types.length === 1
+          ? t.types[0] === action.payload
+          : t.types && t.types.length > 1
+          ? t.types[0] === action.payload || t.types[1] === action.payload
           : null
       );
 

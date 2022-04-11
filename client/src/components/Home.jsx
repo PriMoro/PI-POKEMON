@@ -145,16 +145,7 @@ function Home() {
                   key={poke.id}
                   name={poke.name}
                   img={poke.img}
-                  type={
-                    poke.type
-                      ? poke.type
-                      : Object.entries(poke.types).length === 2
-                      ? poke.types[0].name + poke.types[1].name
-                      : Object.entries(poke.types).length > 0 &&
-                        Object.entries(poke.types).length === 1
-                      ? poke.types[0].name
-                      : null
-                  }
+                  type={poke.type ? poke.type : poke.types}
                   //type={poke.type.length ? poke.type : poke.types}
                   //
                 />

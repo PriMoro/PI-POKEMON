@@ -34,7 +34,7 @@ function Detail() {
             {pokeDetail[0].type ? (
               <h2>type= {pokeDetail[0].type.map((e) => e + " ")} </h2>
             ) : (
-              <h2>type= {pokeDetail[0].types.map((e) => e.name + " ")} </h2>
+              <h2>type= {pokeDetail[0].types.join(" ")} </h2>
             )}
           </div>
         </div>

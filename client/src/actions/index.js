@@ -51,15 +51,16 @@ export function getDetail(id) {
   };
 }
 export function getTypes() {
-  return (dispatch) => {
-    return fetch("http://localhost:3001/types")
-      .then((result) => {
-        result.json();
-      })
-      .then((r) => dispatch({ type: GET_TYPES, payload: r }))
-      .catch((err) => {
-        return err;
-      });
+  return async (dispatch) => {
+    try {
+      const result = await fetch("http://localhost:3001/types");
+      //result.json();
+      const r = await result.json();
+      console.log(r);
+      return dispatch({ type: GET_TYPES, payload: r });
+    } catch (err) {
+      return err;
+    }
   };
 }
 export function postPokes(payload) {

@@ -6,21 +6,20 @@ import { getTypes, postPokes } from "../actions";
 function CreatePokemon() {
   const dispatch = useDispatch();
   const types = useSelector((state) => state.types);
-  console.log(types);
+  //console.log(types);
   const [input, setInput] = React.useState({
     name: "",
     img: "",
-    hp: null,
-    attack: null,
-    defense: null,
-    weight: null,
-    height: null,
-    speed: null,
+    hp: "",
+    attack: "",
+    defense: "",
+    weight: "",
+    height: "",
+    speed: "",
     type: [],
   });
   React.useEffect(() => {
     dispatch(getTypes());
-    console.log(types);
   }, [dispatch]);
   function handleChange(e) {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -101,13 +100,17 @@ function CreatePokemon() {
             name="speed"
           ></input>
         </div>
-        {/* <div>
-          <select>
-            {types.map((t) => {
-              return <option value={t.name}> {t.name} </option>;
-            })}
+        <div>
+          <label>Types</label>
+          <select onChange={(e) => handleChange(e)}>
+            {types.length &&
+              types.map((t) => (
+                <option key={t.name} value={t.name}>
+                  {t.name}
+                </option>
+              ))}
           </select>
-        </div> */}
+        </div>
       </form>
       <button type="submit">CREATE</button>
       <Link to="/home">
