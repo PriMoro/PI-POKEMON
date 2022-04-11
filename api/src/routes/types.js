@@ -4,6 +4,7 @@ const router = Router();
 
 router.get("/", async (req, res) => {
   const allTypes = await getAllTypes();
+  //console.log(allTypes);
   res.send(allTypes);
 });
 

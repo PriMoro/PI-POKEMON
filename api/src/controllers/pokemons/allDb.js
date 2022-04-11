@@ -1,7 +1,7 @@
 const { Pokemon, Type } = require("../../db");
 
 const getAllDataBase = async () => {
-  return await Pokemon.findAll({
+  let r = await Pokemon.findAll({
     include: {
       model: Type,
       attributes: ["name"],
@@ -10,5 +10,8 @@ const getAllDataBase = async () => {
       },
     },
   });
+  r = r.map((e) => ({ ...e.dataValues, types: e.types.map((e) => e.name) }));
+  //console.log(r);
+  return r;
 };
 module.exports = getAllDataBase;
