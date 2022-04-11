@@ -19,13 +19,15 @@ function Pokemon({
       <h5>{id}</h5>
       <img src={img} alt="img" height="200 px" width="200 px" />
       <h4>{name.toUpperCase()}</h4>
-      <h6>{type}</h6>
-      <h5>{hp}</h5>
-      <h5>{speed} </h5>
-      <h5>{attack}</h5>
-      <h5>{defense}</h5>
-      <h5>{height}</h5>
-      <h5>{weight}</h5>
+      <div>
+        {type && type.length === 2 ? (
+          <h6>{type[0] + " " + type[1]}</h6>
+        ) : type && type.length > 0 ? (
+          <h6>{type[0]}</h6>
+        ) : types && Object.entries(types).length > 0 ? (
+          <h6>{types[0]}</h6>
+        ) : null}
+      </div>
     </div>
   );
 }
