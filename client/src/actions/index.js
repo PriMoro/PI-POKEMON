@@ -56,7 +56,7 @@ export function getTypes() {
       const result = await fetch("http://localhost:3001/types");
       //result.json();
       const r = await result.json();
-      console.log(r);
+      //console.log(r);
       return dispatch({ type: GET_TYPES, payload: r });
     } catch (err) {
       return err;
@@ -64,14 +64,18 @@ export function getTypes() {
   };
 }
 export function postPokes(payload) {
-  console.log(payload);
+  //console.log(payload);
   return async (dispatch) => {
     try {
-      const response = await fetch(`http://localhost:3001/pokemons,${payload}`);
-      const r = await response.json();
-      console.log(r);
+      const response = await fetch("http://localhost:3001/pokemons", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      //const r = await response.json();
+      //console.log(r);
       console.log(response);
-      return r;
+      return response.json();
     } catch (err) {
       console.log(err);
     }
