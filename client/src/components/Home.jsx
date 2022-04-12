@@ -137,22 +137,27 @@ function Home() {
         pagination={pagination}
       />
       <div className={styles.pokes}>
-        {currentPokesInPage?.map((poke) => {
-          return (
-            <div>
-              <Link to={`/home/${poke.id}`}>
-                <Pokemon
-                  key={poke.id}
-                  name={poke.name}
-                  img={poke.img}
-                  type={poke.type ? poke.type : poke.types}
-                  //type={poke.type.length ? poke.type : poke.types}
-                  //
-                />
-              </Link>
-            </div>
-          );
-        })}
+        {!currentPokesInPage.length && <h1>No</h1>}
+        {currentPokesInPage ? (
+          currentPokesInPage.map((poke) => {
+            return (
+              <div>
+                <Link to={`/home/${poke.id}`}>
+                  <Pokemon
+                    key={poke.id}
+                    name={poke.name}
+                    img={poke.img}
+                    type={poke.type ? poke.type : poke.types}
+                    //type={poke.type.length ? poke.type : poke.types}
+                    //
+                  />
+                </Link>
+              </div>
+            );
+          })
+        ) : (
+          <h1>Not </h1>
+        )}
       </div>
     </React.Fragment>
   );

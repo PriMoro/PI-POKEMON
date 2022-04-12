@@ -12,6 +12,7 @@ function Pokemon({
   speed,
   height,
   weight,
+  error,
 }) {
   //let ty = type.map((t) => t.charAt(0).toUpperCase() + t.slice(1));
   //console.log(types);
@@ -27,6 +28,7 @@ function Pokemon({
           <h6>{type[0]}</h6>
         ) : null}
       </div>
+      {error && <h1>Not found</h1>}
     </div>
   );
 }
