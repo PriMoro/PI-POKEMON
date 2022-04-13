@@ -1,6 +1,7 @@
 const getAllApi = require("./allApi");
 const getAllDataBase = require("./allDb");
 
+//_to get all pokemons
 const getAll = async () => {
   const allApi = await getAllApi();
   const allDb = await getAllDataBase();

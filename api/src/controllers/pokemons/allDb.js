@@ -1,5 +1,6 @@
 const { Pokemon, Type } = require("../../db");
 
+//_to get all pokemon from database
 const getAllDataBase = async () => {
   let r = await Pokemon.findAll({
     include: {

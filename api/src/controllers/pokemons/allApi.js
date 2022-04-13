@@ -1,5 +1,6 @@
 const axios = require("axios");
 
+//_to get all pokemons from api
 const getAllApi = async () => {
   const first20 = await axios.get("https://pokeapi.co/api/v2/pokemon");
   const second20 = await axios.get(first20.data.next);
