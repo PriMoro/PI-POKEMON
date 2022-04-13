@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getTypes } from "../actions";
-
+import styles from "./CreatePokemon.module.css";
 function toValidateInput(input) {
   let errors = {};
   if (!input.name) {
@@ -113,124 +113,145 @@ function CreatePokemon() {
   }
   return (
     <div>
-      <h1>Here you can create your Pokemon</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
-          <label>Name:</label>
-          <input
-            onChange={(e) => handleChange(e)}
-            type="text"
-            value={input.name}
-            name="name"
-          ></input>
-          {errors.name && <p>{errors.name}</p>}
+      <h1>HERE YOU CAN CREATE YOUR POKEMON</h1>
+      <div className={styles.split}>
+        <div className={styles.text}>
+          <p>REMEMBER THE FOLLOWING: </p>
+          <p>
+            NAME must contain lowercase letters only (4 to 10 letters) <br />
+            IMAGE must be a valid image address <br />
+            HP must contain only integers numbers from 1 to 99 <br /> ATTACK
+            must contain only integers numbers from 1 to 99 <br /> DEFENSE must
+            contain only integers numbers from 1 to 99 <br />
+            SPEED must contain only integers numbers from 1 to 99 <br /> HEIGHT
+            must contain only integers from 1 to 99 <br /> WEIGHT must contain
+            only integers numbers from 1 to 99 <br /> TYPE you can only choose
+            up to two different types <br /> The button will only be activated
+            when all your data is valid.
+          </p>
+          <p>ALL FIELDS ARE REQUIRED</p>
         </div>
-        <div>
-          <label>Image:</label>
-          <input
-            onChange={(e) => handleChange(e)}
-            type="url"
-            value={input.img}
-            name="img"
-          ></input>
-          {errors.img && <p>{errors.img}</p>}
+
+        <div className={styles.input}>
+          <form onSubmit={(e) => handleSubmit(e)}>
+            <div>
+              <label>Name:</label>
+              <input
+                onChange={(e) => handleChange(e)}
+                type="text"
+                value={input.name}
+                name="name"
+              ></input>
+              {errors.name && <p>{errors.name}</p>}
+            </div>
+            <div>
+              <label>Image:</label>
+              <input
+                onChange={(e) => handleChange(e)}
+                type="url"
+                value={input.img}
+                name="img"
+              ></input>
+              {errors.img && <p>{errors.img}</p>}
+            </div>
+            <div>
+              <label>Health Points:</label>
+              <input
+                onChange={(e) => handleChange(e)}
+                type="number"
+                value={input.hp}
+                name="hp"
+              ></input>
+              {errors.hp && <p>{errors.hp}</p>}
+            </div>
+            <div>
+              <label>Attack:</label>
+              <input
+                onChange={(e) => handleChange(e)}
+                type="number"
+                value={input.attack}
+                name="attack"
+              ></input>
+              {errors.attack && <p>{errors.attack}</p>}
+            </div>
+            <div>
+              <label>Defense:</label>
+              <input
+                onChange={(e) => handleChange(e)}
+                type="number"
+                value={input.defense}
+                name="defense"
+              ></input>
+              {errors.defense && <p>{errors.defense}</p>}
+            </div>
+            <div>
+              <label>Height:</label>
+              <input
+                onChange={(e) => handleChange(e)}
+                type="number"
+                value={input.height}
+                name="height"
+              ></input>
+              {errors.height && <p>{errors.height}</p>}
+            </div>
+            <div>
+              <label>Weight:</label>
+              <input
+                onChange={(e) => handleChange(e)}
+                type="number"
+                value={input.weight}
+                name="weight"
+              ></input>
+              {errors.weight && <p>{errors.weight}</p>}
+            </div>
+            <div>
+              <label>Speed:</label>
+              <input
+                onChange={(e) => handleChange(e)}
+                type="number"
+                value={input.speed}
+                name="speed"
+              ></input>
+              {errors.speed && <p>{errors.speed}</p>}
+            </div>
+            <div>
+              <label>Types</label>
+              <select onChange={(e) => handleSelect(e)}>
+                {types.length &&
+                  types.map((t) => (
+                    <option key={t.name} value={t.name}>
+                      {t.name}
+                    </option>
+                  ))}
+              </select>
+              <div>
+                <ul>
+                  <li>{input.type.map((t) => t + ", ")} </li>
+                </ul>
+              </div>
+            </div>
+            {!input.type.length ||
+            input.type.length > 2 ||
+            input.type[0] === input.type[1] ||
+            errors.name ||
+            errors.img ||
+            errors.hp ||
+            errors.attack ||
+            errors.defense ||
+            errors.weight ||
+            errors.height ||
+            errors.speed ? (
+              <button type="submit" disabled={true}>
+                CREATE
+              </button>
+            ) : (
+              <button type="submit" disabled={!input}>
+                CREATE
+              </button>
+            )}
+          </form>
         </div>
-        <div>
-          <label>Health Points:</label>
-          <input
-            onChange={(e) => handleChange(e)}
-            type="number"
-            value={input.hp}
-            name="hp"
-          ></input>
-          {errors.hp && <p>{errors.hp}</p>}
-        </div>
-        <div>
-          <label>Attack:</label>
-          <input
-            onChange={(e) => handleChange(e)}
-            type="number"
-            value={input.attack}
-            name="attack"
-          ></input>
-          {errors.attack && <p>{errors.attack}</p>}
-        </div>
-        <div>
-          <label>Defense:</label>
-          <input
-            onChange={(e) => handleChange(e)}
-            type="number"
-            value={input.defense}
-            name="defense"
-          ></input>
-          {errors.defense && <p>{errors.defense}</p>}
-        </div>
-        <div>
-          <label>Height:</label>
-          <input
-            onChange={(e) => handleChange(e)}
-            type="number"
-            value={input.height}
-            name="height"
-          ></input>
-          {errors.height && <p>{errors.height}</p>}
-        </div>
-        <div>
-          <label>Weight:</label>
-          <input
-            onChange={(e) => handleChange(e)}
-            type="number"
-            value={input.weight}
-            name="weight"
-          ></input>
-          {errors.weight && <p>{errors.weight}</p>}
-        </div>
-        <div>
-          <label>Speed:</label>
-          <input
-            onChange={(e) => handleChange(e)}
-            type="number"
-            value={input.speed}
-            name="speed"
-          ></input>
-          {errors.speed && <p>{errors.speed}</p>}
-        </div>
-        <div>
-          <label>Types</label>
-          <select onChange={(e) => handleSelect(e)}>
-            {types.length &&
-              types.map((t) => (
-                <option key={t.name} value={t.name}>
-                  {t.name}
-                </option>
-              ))}
-          </select>
-          <div>
-            <ul>
-              <li>{input.type.map((t) => t + ", ")} </li>
-            </ul>
-          </div>
-        </div>
-        {!input.type.length ||
-        input.type.length > 2 ||
-        input.type[0] === input.type[1] ||
-        errors.name ||
-        errors.img ||
-        errors.hp ||
-        errors.attack ||
-        errors.defense ||
-        errors.weight ||
-        errors.height ||
-        errors.speed ? (
-          <button type="submit" disabled={true}>
-            CREATE
-          </button>
-        ) : (
-          <button type="submit" disabled={!input}>
-            CREATE
-          </button>
-        )}
-      </form>
+      </div>
       <Link to="/home">
         <button>Back to Home</button>
       </Link>

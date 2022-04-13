@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from "./NavBar.module.css";
 
 function NavBar() {
   return (
     <div>
-      <ul>
-        <li>
+      <ul className={styles.center}>
+        <li className={styles.color}>
           <Link to={"/home"}>HOME</Link>
         </li>
-        <li>
+        <li className={styles.split}>
           <Link to={"/create"}>CREATE</Link>
         </li>
-        <li>
+        <li className={styles.split}>
           <Link to={"/"}>BACK</Link>
         </li>
       </ul>

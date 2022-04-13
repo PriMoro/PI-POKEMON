@@ -1,0 +1,16 @@
+.center{  
+    background-color: rgb(43, 226, 177);
+    color: rgb(220, 110, 218);
+    font-size: 50px ;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: oblique;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    list-style:none;
+    margin-top: 1px;
+}
+.color{
+    color: rgb(220, 110, 218);   
+}

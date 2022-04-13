@@ -1,0 +1,17 @@
+.split{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+.text {
+    font-size: 20px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-style:oblique;
+    margin-right: 300px;
+    background-color: rgb(255, 243, 151);
+    color: blue;
+}
+.input{
+    margin-right: 100px;
+}

@@ -65,7 +65,6 @@ function Home() {
   }
   return (
     <React.Fragment>
-      <div className={styles.home}>Home</div>
       <button className={styles.button} onClick={(e) => handleClick(e)}>
         Show all
       </button>
@@ -141,7 +140,7 @@ function Home() {
         {currentPokesInPage ? (
           currentPokesInPage.map((poke) => {
             return (
-              <div>
+              <div key={poke.id}>
                 <Link to={`/home/${poke.id}`}>
                   <Pokemon
                     key={poke.id}
@@ -149,7 +148,6 @@ function Home() {
                     img={poke.img}
                     type={poke.type ? poke.type : poke.types}
                     //type={poke.type.length ? poke.type : poke.types}
-                    //
                   />
                 </Link>
               </div>
