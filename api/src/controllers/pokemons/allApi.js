@@ -10,10 +10,9 @@ const getAllApi = async () => {
     delete p.url;
     p.id = url.data.id;
     p.img = url.data.sprites.other.dream_world.front_default;
-    // p.img =
-    //   url.data.sprites.versions.generation -
-    //   v.black -
-    //   white.animated.front_default;
+    //p.img =
+    url.data.sprites.versions["generation-v"]["black-white"].animated
+      .front_shiny;
     //p.img = url.data.sprites.front_default;
     p.hp = url.data.stats[0].base_stat;
     p.attack = url.data.stats[1].base_stat;
