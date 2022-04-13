@@ -11,6 +11,7 @@ import {
 import Pagination from "./Pagination";
 import Pokemon from "./Pokemon";
 import SearchBar from "./SearchBar";
+import imgGif from "../images/poke.gif";
 import styles from "./Home.module.css";
 function Home() {
   const dispatch = useDispatch();
@@ -65,16 +66,19 @@ function Home() {
   }
   return (
     <React.Fragment>
-      <button className={styles.button} onClick={(e) => handleClick(e)}>
-        Show all
-      </button>
-      <Link to="/create">
-        <button className={styles.button}>Create</button>
-      </Link>
-      <div>
+      <div className={styles.center}>
+        <button className={styles.button} onClick={(e) => handleClick(e)}>
+          Show all
+        </button>
+        <Link to="/create">
+          <button className={styles.button}>Create</button>
+        </Link>
         <SearchBar />
+      </div>
+      <div>
         <div className={styles.center}>
           <div className={styles.description}>
+            <label className={styles.label}>Order By Name</label>
             <select
               className={styles.button}
               onChange={(e) => handleOrderName(e)}
@@ -84,6 +88,7 @@ function Home() {
             </select>
           </div>
           <div className={styles.description}>
+            <label className={styles.label}>Order By Attack</label>
             <select
               className={styles.button}
               onChange={(e) => handleOrderAttack(e)}
@@ -93,6 +98,9 @@ function Home() {
             </select>
           </div>
           <div className={styles.description}>
+            <label className={styles.label}>
+              Filter By Existing or Created
+            </label>
             <select
               className={styles.button}
               onChange={(e) => handleFilterApiDb(e)}
@@ -102,6 +110,7 @@ function Home() {
               <option value="db">Created</option>
             </select>
           </div>
+          <label className={styles.label}>Filter By Type</label>
           <select
             className={styles.button}
             onChange={(e) => handleFilterTypes(e)}
@@ -136,7 +145,14 @@ function Home() {
         pagination={pagination}
       />
       <div className={styles.pokes}>
-        {!currentPokesInPage.length && <h1>No</h1>}
+        {!currentPokesInPage.length && (
+          <div>
+            <h1>LOADING...</h1>
+            <div>
+              <img width="300px" src={imgGif} alt="img" />
+            </div>
+          </div>
+        )}
         {currentPokesInPage ? (
           currentPokesInPage.map((poke) => {
             return (

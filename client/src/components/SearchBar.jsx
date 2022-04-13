@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchPoke } from "../actions";
-
+import styles from "./SearchBar.module.css";
 function toValidateName(name) {
   let errors = {};
   if (!name) {
@@ -41,6 +41,7 @@ function SearchBar() {
   return (
     <div>
       <input
+        className={styles.input}
         type="text"
         value={name}
         placeholder="Search..."
@@ -48,11 +49,15 @@ function SearchBar() {
       />
       {errors.name && <p>{errors.name}</p>}
       {errors.name || !name ? (
-        <button type="submit" disabled={true}>
+        <button className={styles.button} type="submit" disabled={true}>
           Ok
         </button>
       ) : (
-        <button type="submit" onClick={(e) => handleSubmit(e)}>
+        <button
+          className={styles.button}
+          type="submit"
+          onClick={(e) => handleSubmit(e)}
+        >
           Ok
         </button>
       )}

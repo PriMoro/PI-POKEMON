@@ -113,7 +113,13 @@ function CreatePokemon() {
   }
   return (
     <div>
-      <h1>HERE YOU CAN CREATE YOUR POKEMON</h1>
+      <div className={styles.center}>
+        <Link to="/home">
+          <button className={styles.buttonBack}>Back to Home</button>
+        </Link>
+        <h1 className={styles.h1}>HERE YOU CAN CREATE YOUR POKEMON</h1>
+      </div>
+
       <div className={styles.split}>
         <div className={styles.text}>
           <p>REMEMBER THE FOLLOWING: </p>
@@ -132,11 +138,12 @@ function CreatePokemon() {
           <p>ALL FIELDS ARE REQUIRED</p>
         </div>
 
-        <div className={styles.input}>
+        <div className={styles.inputs}>
           <form onSubmit={(e) => handleSubmit(e)}>
             <div>
-              <label>Name:</label>
+              <label className={styles.label}>Name:</label>
               <input
+                className={styles.input}
                 onChange={(e) => handleChange(e)}
                 type="text"
                 value={input.name}
@@ -145,8 +152,9 @@ function CreatePokemon() {
               {errors.name && <p>{errors.name}</p>}
             </div>
             <div>
-              <label>Image:</label>
+              <label className={styles.label}>Image:</label>
               <input
+                className={styles.input}
                 onChange={(e) => handleChange(e)}
                 type="url"
                 value={input.img}
@@ -155,8 +163,9 @@ function CreatePokemon() {
               {errors.img && <p>{errors.img}</p>}
             </div>
             <div>
-              <label>Health Points:</label>
+              <label className={styles.label}>Health Points:</label>
               <input
+                className={styles.input}
                 onChange={(e) => handleChange(e)}
                 type="number"
                 value={input.hp}
@@ -165,8 +174,9 @@ function CreatePokemon() {
               {errors.hp && <p>{errors.hp}</p>}
             </div>
             <div>
-              <label>Attack:</label>
+              <label className={styles.label}>Attack:</label>
               <input
+                className={styles.input}
                 onChange={(e) => handleChange(e)}
                 type="number"
                 value={input.attack}
@@ -175,8 +185,9 @@ function CreatePokemon() {
               {errors.attack && <p>{errors.attack}</p>}
             </div>
             <div>
-              <label>Defense:</label>
+              <label className={styles.label}>Defense:</label>
               <input
+                className={styles.input}
                 onChange={(e) => handleChange(e)}
                 type="number"
                 value={input.defense}
@@ -185,8 +196,9 @@ function CreatePokemon() {
               {errors.defense && <p>{errors.defense}</p>}
             </div>
             <div>
-              <label>Height:</label>
+              <label className={styles.label}>Height:</label>
               <input
+                className={styles.input}
                 onChange={(e) => handleChange(e)}
                 type="number"
                 value={input.height}
@@ -195,8 +207,9 @@ function CreatePokemon() {
               {errors.height && <p>{errors.height}</p>}
             </div>
             <div>
-              <label>Weight:</label>
+              <label className={styles.label}>Weight:</label>
               <input
+                className={styles.input}
                 onChange={(e) => handleChange(e)}
                 type="number"
                 value={input.weight}
@@ -205,8 +218,9 @@ function CreatePokemon() {
               {errors.weight && <p>{errors.weight}</p>}
             </div>
             <div>
-              <label>Speed:</label>
+              <label className={styles.label}>Speed:</label>
               <input
+                className={styles.input}
                 onChange={(e) => handleChange(e)}
                 type="number"
                 value={input.speed}
@@ -215,8 +229,11 @@ function CreatePokemon() {
               {errors.speed && <p>{errors.speed}</p>}
             </div>
             <div>
-              <label>Types</label>
-              <select onChange={(e) => handleSelect(e)}>
+              <label className={styles.label}>Types</label>
+              <select
+                className={styles.select}
+                onChange={(e) => handleSelect(e)}
+              >
                 {types.length &&
                   types.map((t) => (
                     <option key={t.name} value={t.name}>
@@ -245,16 +262,17 @@ function CreatePokemon() {
                 CREATE
               </button>
             ) : (
-              <button type="submit" disabled={!input}>
+              <button
+                className={styles.buttonCreate}
+                type="submit"
+                disabled={!input}
+              >
                 CREATE
               </button>
             )}
           </form>
         </div>
       </div>
-      <Link to="/home">
-        <button>Back to Home</button>
-      </Link>
     </div>
   );
 }

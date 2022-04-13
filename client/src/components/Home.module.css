@@ -1,3 +1,11 @@
+.label{
+  font-size: 22px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: rgb(30, 4, 113);
+  text-decoration: underline;
+  font-style: italic;
+margin-left: 15px;
+}
 .button{
     margin-top: 5px;
     width: 100px;
@@ -16,7 +24,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     border: 5px;
-    border-color: beige;
+    border-color: rgb(220, 225, 245);
 }
 .home {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
