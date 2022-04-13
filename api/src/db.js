@@ -25,6 +25,7 @@ fs.readdirSync(path.join(__dirname, "/models"))
     modelDefiners.push(require(path.join(__dirname, "/models", file)));
   });
 
+//_ ----------------------------------------------------------------
 // Injectamos la conexion (sequelize) a todos los modelos
 modelDefiners.forEach((model) => model(sequelize));
 // Capitalizamos los nombres de los modelos ie: product => Product
@@ -43,7 +44,7 @@ const { Pokemon, Type } = sequelize.models;
 // Product.hasMany(Reviews);
 Pokemon.belongsToMany(Type, { through: "pokemon_type" });
 Type.belongsToMany(Pokemon, { through: "pokemon_type" });
-
+//_ ----------------------------------------------------------------
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, // para importart la conexión { conn } = require('./db.js');
