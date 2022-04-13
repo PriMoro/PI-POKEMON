@@ -8,7 +8,7 @@ function toValidateName(name) {
     errors.name = "This field is required";
   } else if (!/^[a-z]{5,15}$/.test(name)) {
     errors.name =
-      "The name must be an avaliable name with only 4 to 10 letters. ";
+      "The name must be an avaliable name with only 4 to 10 minuscule letters. ";
   }
   return errors;
 }
@@ -32,7 +32,7 @@ function SearchBar() {
     if (name.length === 0) {
       return alert("NOT AVALIABLE");
     } else if (p.length < 1) {
-      return alert("NOT FOUND");
+      return alert("POKEMON NOT FOUND");
     } else {
       dispatch(searchPoke(name));
       setName("");

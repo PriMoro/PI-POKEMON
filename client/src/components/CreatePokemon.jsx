@@ -84,10 +84,11 @@ function CreatePokemon() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(input);
+    alert("Pokemon was created successfully");
     //console.log(Object.entries(toValidateInput(input)));
     fetch("http://localhost:3001/pokemons", {
       method: "POST",
-      body: JSON.stringify(input), // data can be `string` or {object}!
+      body: JSON.stringify(input),
       headers: {
         "Content-Type": "application/json",
       },
@@ -98,7 +99,7 @@ function CreatePokemon() {
       })
       .catch((error) => console.error("Error:", error));
     //dispatch(postPokes(input));
-    //alert("Pokemon was created successfully");
+
     setInput({
       name: "",
       img: "",

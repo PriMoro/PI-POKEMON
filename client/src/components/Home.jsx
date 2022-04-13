@@ -21,8 +21,7 @@ function Home() {
   // ! PAGINATION
   // !--------------------------------------------------------------
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [pokesByPage /*funcion del estado no definida porque no la uso*/] =
-    React.useState(12);
+  const [pokesByPage /*function not neccesary*/] = React.useState(12);
   const lastPoke = currentPage * pokesByPage;
   const firstPoke = lastPoke - pokesByPage;
   const currentPokesInPage = allPokes.slice(firstPoke, lastPoke);
