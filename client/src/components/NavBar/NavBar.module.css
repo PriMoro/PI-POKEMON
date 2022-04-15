@@ -1,0 +1,17 @@
+.center{  
+    opacity: 0.3;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    list-style:none;
+    margin-top: 1px;
+    background: linear-gradient(to top, rgb(28, 43, 79), rgb(165, 221, 253));
+
+}
+.color{
+    color: aliceblue;   
+    font-size: 50px ;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: oblique;
+}

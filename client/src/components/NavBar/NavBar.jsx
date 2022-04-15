@@ -9,10 +9,10 @@ function NavBar() {
         <li className={styles.color}>
           <Link to={"/home"}>HOME</Link>
         </li>
-        <li className={styles.split}>
+        <li className={styles.color}>
           <Link to={"/create"}>CREATE</Link>
         </li>
-        <li className={styles.split}>
+        <li className={styles.color}>
           <Link to={"/"}>BACK</Link>
         </li>
       </ul>

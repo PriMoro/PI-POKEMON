@@ -1,13 +1,15 @@
 .label{
   font-size: 22px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: rgb(30, 4, 113);
+  color: white;
   text-decoration: underline;
   font-style: italic;
 margin-left: 15px;
 }
 .button{
     margin-top: 5px;
+    margin-left: 20px;
+    margin-right: 10px;
     width: 100px;
     height: 40px;
     text-align: center;
@@ -34,10 +36,15 @@ margin-left: 15px;
     color: rgb(0, 255, 34);
 }
 .description{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 20px;
     font-style: italic;
-    color: red
+    color: white;
+    margin-left: 40px;
 }
 .center{  
   display: flex;

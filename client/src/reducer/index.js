@@ -18,8 +18,6 @@ let initialState = {
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case POST_POKE:
-      return { ...state };
     case GET_TYPES:
       //console.log(action.payload);
       return {
@@ -31,7 +29,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         pokeDetail: [],
         pokemons: action.payload,
-        pokemonsCopy: action.payload, //? --> to save an auxiliary state
+        pokemonsCopy: action.payload, //---> to save an auxiliary state
       };
     case SEARCH_POKE:
       return {
@@ -96,20 +94,6 @@ export default function rootReducer(state = initialState, action) {
       return { ...state, pokemons: filtered };
     case FILTER_TYPES:
       const all2 = state.pokemonsCopy;
-      // console.log(
-      //   state.pokemonsCopy.map((p) => {
-      //     if (
-      //       p.types &&
-      //       Object.entries(p.types).length > 0 &&
-      //       Object.entries(p.types).length === 1
-      //     ) {
-      //       return p.types[0].name;
-      //     } else if (p.types && Object.entries(p.types).length > 1) {
-      //       return p.types[0].name + " " + p.types[1].name;
-      //     }
-      //   })
-      // );
-
       const fil = all2.filter((t) =>
         t.type
           ? t.type[0] === action.payload || t.type[1] === action.payload
@@ -119,7 +103,6 @@ export default function rootReducer(state = initialState, action) {
           ? t.types[0] === action.payload || t.types[1] === action.payload
           : null
       );
-
       return {
         ...state,
         pokemons: fil,

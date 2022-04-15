@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail } from "../actions";
+import { cleanDetail, getDetail } from "../../actions";
 import styles from "./Detail.module.css";
 function Detail() {
   const { id } = useParams();
@@ -10,6 +10,7 @@ function Detail() {
   const pokeDetail = useSelector((state) => state.pokeDetail);
 
   React.useEffect(() => {
+    //dispatch(cleanDetail());
     dispatch(getDetail(id));
   }, [dispatch, id]);
   //console.log(Object.entries(pokeDetail));
@@ -38,13 +39,18 @@ function Detail() {
               <div>
                 {pokeDetail[0].type ? (
                   <h2>
-                    Type:{" "}
+                    Type:
                     {pokeDetail[0].type.map(
-                      (e) => e.charAt(0).toUpperCase() + e.slice(1) + " "
-                    )}{" "}
+                      (e) => " " + e.charAt(0).toUpperCase() + e.slice(1) + " "
+                    )}
                   </h2>
                 ) : (
-                  <h2>Type: {pokeDetail[0].types.join(" ")} </h2>
+                  <h2>
+                    Type:
+                    {pokeDetail[0].types.map(
+                      (e) => " " + e.charAt(0).toUpperCase() + e.slice(1) + " "
+                    )}
+                  </h2>
                 )}
               </div>
             </div>

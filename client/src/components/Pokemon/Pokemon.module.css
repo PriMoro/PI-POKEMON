@@ -5,5 +5,4 @@
     border: 5px;
     border: 5px solid aquamarine;
     border-radius: 13px;
-    background-color: rgb(248, 255, 122);
-}
+    background: linear-gradient(to top, rgb(234, 255, 2), rgb(253, 225, 165));}

@@ -23,9 +23,9 @@ function Pokemon({
       <h4>{name.toUpperCase()}</h4>
       <div>
         {type && type.length === 2 ? (
-          <h6>{type[0] + " " + type[1]}</h6>
+          <h6>TYPE: {type[0].toUpperCase() + " - " + type[1].toUpperCase()}</h6>
         ) : type && type.length > 0 ? (
-          <h6>{type[0]}</h6>
+          <h6>TYPE: {type[0].toUpperCase()}</h6>
         ) : null}
       </div>
       {error && <h1>Not found</h1>}

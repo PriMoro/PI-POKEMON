@@ -24,7 +24,7 @@ export function searchPoke(name) {
       .then((response) => response.json())
       .then((r) => dispatch({ type: SEARCH_POKE, payload: r }))
       .catch((err) => {
-        return err;
+        return alert("not found");
       });
   };
 }
@@ -60,24 +60,6 @@ export function getTypes() {
       return dispatch({ type: GET_TYPES, payload: r });
     } catch (err) {
       return err;
-    }
-  };
-}
-export function postPokes(payload) {
-  //console.log(payload);
-  return async (dispatch) => {
-    try {
-      const response = await fetch("http://localhost:3001/pokemons", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      //const r = await response.json();
-      //console.log(r);
-      console.log(response);
-      return response.json();
-    } catch (err) {
-      console.log(err);
     }
   };
 }

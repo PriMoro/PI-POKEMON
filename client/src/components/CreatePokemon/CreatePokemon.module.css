@@ -1,3 +1,15 @@
+.side{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.order {
+    display: flex;
+    flex-direction: column;
+     align-items: center;
+    justify-content: space-around; 
+}
 .center {
     display: flex;
     flex-direction: row;
@@ -14,15 +26,14 @@
 }
 .split{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+   
+    flex-direction: row-reverse;
 }
 .text {
     font-size: 25px;
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-style:oblique;
-    margin-right: 300px;
+    margin-right: 200px;
     background-color: rgb(255, 243, 151);
     color: blue;
 }
@@ -40,9 +51,14 @@
     color: green;
     font-size: 18px;
     width: 200px;
-    height: 35px;
+    height: 25px;
     background-color: aquamarine;
     border-radius: 7px;
+    margin-right: 10px;
+   
+    margin-top: 10px;
+    margin-bottom: 3px;
+    
 }
 .inputs{
     background-color: rgb(251, 201, 234);
@@ -55,7 +71,23 @@
     margin-bottom: 5px;
     width: 200px;
     height: 30px;
-    border: aquamarine solid 5px ;
+    border: rgb(17, 194, 73) solid 5px ;
+    border-radius: 10px;
+}
+
+.error{
+    margin-top: 4px;
+    margin-bottom: 7px;
+    color: red;
+}
+.danger{
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-top: 7px;
+    margin-bottom: 5px;
+    width: 200px;
+    height: 30px;
+    border: red solid 5px ;
     border-radius: 10px;
 }
 .buttonBack{

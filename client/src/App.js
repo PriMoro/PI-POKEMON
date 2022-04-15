@@ -1,11 +1,11 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import "./App.css";
-import CreatePokemon from "./components/CreatePokemon";
-import Detail from "./components/Detail";
-import EnterPage from "./components/EnterPage.jsx";
-import Home from "./components/Home.jsx";
-import NavBar from "./components/NavBar";
+import CreatePokemon from "./components/CreatePokemon/CreatePokemon";
+import Detail from "./components/Detail/Detail";
+import EnterPage from "./components/EnterPage/EnterPage";
+import Home from "./components/Home/Home";
+import NavBar from "./components/NavBar/NavBar";
 function App() {
   return (
     <React.Fragment>
