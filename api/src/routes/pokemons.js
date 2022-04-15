@@ -1,3 +1,4 @@
+const { default: axios } = require("axios");
 const { Router } = require("express");
 const getAll = require("../controllers/pokemons/all");
 const { Pokemon, Type } = require("../db");
@@ -6,13 +7,30 @@ const router = Router();
 router.get("/", async (req, res) => {
   const { name } = req.query;
   try {
-    const allPokemons = await getAll();
     if (name) {
-      const filtered = await allPokemons.filter((p) =>
-        p.name.toLowerCase().includes(name.toLowerCase())
-      );
-      filtered.length ? res.send(filtered) : res.status(404).send("not found");
-    } else {
+      const r = await axios(`https://pokeapi.co/api/v2/pokemon/${name}`);
+      const response = r.data;
+      const poke = {
+        name: response.name,
+        id: response.id,
+        img: response.sprites.other.dream_world.front_default,
+        hp: response.stats[0].base_stat,
+        attack: response.stats[1].base_stat,
+        defense: response.stats[2].base_stat,
+        weight: response.weight,
+        height: response.height,
+        speed: response.stats[5].base_stat,
+        type: response.types.map((el) => el.type.name),
+      };
+      res.send([poke]);
+    }
+    // if (name) {
+    //   const filtered = await allPokemons.filter((p) =>
+    //     p.name.toLowerCase().includes(name.toLowerCase())
+    //   );
+    //   filtered.length ? res.send(filtered) : res.status(404).send("not found");
+    else {
+      const allPokemons = await getAll();
       res.send(allPokemons);
     }
   } catch (error) {
