@@ -1,6 +1,4 @@
-//import React from "react";
 import { Link } from "react-router-dom";
-
 import React, { Component } from "react";
 import logo from "../../images/pokémon_logo.svg.png";
 import styles from "./EnterPage.module.css";

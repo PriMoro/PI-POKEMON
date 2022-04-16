@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { cleanDetail, getDetail } from "../../actions";
+import { getDetail } from "../../actions";
 import styles from "./Detail.module.css";
 function Detail() {
   const { id } = useParams();
@@ -10,10 +10,8 @@ function Detail() {
   const pokeDetail = useSelector((state) => state.pokeDetail);
 
   React.useEffect(() => {
-    //dispatch(cleanDetail());
     dispatch(getDetail(id));
   }, [dispatch, id]);
-  //console.log(Object.entries(pokeDetail));
 
   return (
     <div>
