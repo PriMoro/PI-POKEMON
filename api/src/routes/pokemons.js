@@ -23,13 +23,7 @@ router.get("/", async (req, res) => {
         type: response.types.map((el) => el.type.name),
       };
       res.send([poke]);
-    }
-    // if (name) {
-    //   const filtered = await allPokemons.filter((p) =>
-    //     p.name.toLowerCase().includes(name.toLowerCase())
-    //   );
-    //   filtered.length ? res.send(filtered) : res.status(404).send("not found");
-    else {
+    } else {
       const allPokemons = await getAll();
       res.send(allPokemons);
     }
