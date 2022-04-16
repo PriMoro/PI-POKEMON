@@ -7,7 +7,6 @@ import {
   SEARCH_POKE,
   GET_DETAIL,
   GET_TYPES,
-  POST_POKE,
 } from "../actions";
 let initialState = {
   pokemons: [],
@@ -19,7 +18,6 @@ let initialState = {
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_TYPES:
-      //console.log(action.payload);
       return {
         ...state,
         types: action.payload,
