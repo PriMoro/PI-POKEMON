@@ -9,7 +9,8 @@
     margin-bottom: 5px;
     width: 200px;
     height: 30px;
-    border: aquamarine solid 5px ;
+    color: rgb(183, 222, 255);
+    background-color: rgb(29, 3, 81);
     border-radius: 10px;
 }
 .danger{
@@ -34,7 +35,8 @@
 }
 .button{
     font-size: 20px;
-    background-color: aqua;
+    color: aliceblue;
+    background-color: rgb(22, 71, 124);
     border: 3px;
     border-radius: 7px;
     height: 40px;

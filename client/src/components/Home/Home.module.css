@@ -19,12 +19,22 @@ margin-left: 15px;
   background-color: orange;
   color: rgb(1, 11, 20);
 }
+.gifdire{
+  margin-left: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loading{
+  color: aliceblue;
+}
 .pokes{
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 10px;
+    margin-right: 10px;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction:row;
+flex-wrap: wrap;
     border: 5px;
     border-color: rgb(220, 225, 245);
 }

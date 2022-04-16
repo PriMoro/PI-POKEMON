@@ -146,14 +146,14 @@ function Home() {
         pagination={pagination}
       />
       <div className={styles.pokes}>
-        {!currentPokesInPage.length && (
-          <div>
-            <h1>LOADING...</h1>
+        {!currentPokesInPage.length ? (
+          <div className={styles.gifdire}>
+            <h1 className={styles.loading}>LOADING...</h1>
             <div>
               <img width="300px" src={imgGif} alt="img" />
             </div>
           </div>
-        )}
+        ) : null}
         {currentPokesInPage ? (
           currentPokesInPage.map((poke) => {
             return (

@@ -87,6 +87,10 @@ function CreatePokemon() {
     //console.log("2" + input.type);
   }
 
+  function handleDelete(t) {
+    setInput({ ...input, type: input.type.filter((e) => e !== t) });
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     alert("Pokemon was created successfully");
@@ -296,20 +300,41 @@ function CreatePokemon() {
             errors.defense ||
             errors.weight ||
             errors.height ||
-            errors.speed ? (
+            errors.speed ||
+            !input.name ||
+            !input.img ||
+            !input.hp ||
+            !input.attack ||
+            !input.defense ||
+            !input.speed ||
+            !input.weight ||
+            !input.height ? (
               <button type="submit" disabled={true}>
                 CREATE
               </button>
             ) : (
-              <button
-                className={styles.buttonCreate}
-                type="submit"
-                disabled={!input}
-              >
+              <button className={styles.buttonCreate} type="submit">
                 CREATE
               </button>
             )}
           </form>
+
+          <div className={styles.type}>
+            {input.type.length ? (
+              <h5 className={styles.left}>YOUR CHOSEN TYPES: </h5>
+            ) : null}
+            {input.type.map((t) => (
+              <div className={styles.type}>
+                <p className={styles.type}> {" " + t.toUpperCase() + " "} </p>
+                <button
+                  className={styles.delete}
+                  onClick={() => handleDelete(t)}
+                >
+                  X
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

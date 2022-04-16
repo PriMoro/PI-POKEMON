@@ -1,3 +1,19 @@
+.type{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.left{
+    margin-right: 10px;
+}
+.delete{
+    background-color: red;
+    color: white;
+    height: 20px;
+    
+    margin-right: 10px;
+}
 .side{
     display: flex;
     flex-direction: row;
@@ -17,7 +33,7 @@
     justify-content: space-around;
 }
 .h1{
-    background-color: rgb(222, 244, 59);
+    background: linear-gradient(to bottom, rgb(255, 253, 151), yellow);
     font-family:'Courier New', Courier, monospace;
     font-style: italic;
     text-decoration: underline;
@@ -34,8 +50,9 @@
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-style:oblique;
     margin-right: 200px;
-    background-color: rgb(255, 243, 151);
+    background: linear-gradient(to left, rgb(234, 239, 141), rgb(244, 194, 102));
     color: blue;
+    border-radius: 20px;
 }
 .label{
     font-size: 25px;
@@ -61,7 +78,8 @@
     
 }
 .inputs{
-    background-color: rgb(251, 201, 234);
+    border-radius: 20px;
+    background: linear-gradient(to left, rgb(255, 204, 238), rgb(244, 218, 168));
     margin-right: 100px;
 }
 .input{
