@@ -154,7 +154,7 @@ function Home() {
             </div>
           </div>
         ) : null}
-        {currentPokesInPage ? (
+        {currentPokesInPage.length &&
           currentPokesInPage.map((poke) => {
             return (
               <div key={poke.id}>
@@ -168,10 +168,7 @@ function Home() {
                 </Link>
               </div>
             );
-          })
-        ) : (
-          <h1>Not </h1>
-        )}
+          })}
       </div>
     </React.Fragment>
   );
