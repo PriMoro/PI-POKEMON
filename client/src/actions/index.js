@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const GET_POKEMONS = "GET_POKEMONS";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const ORDER_BY_ATTACK = "ORDER_BY_ATTACK";
@@ -10,8 +12,9 @@ export const POST_POKE = "POST_POKE";
 
 export function getPokes() {
   return (dispatch) => {
-    return fetch("http://localhost:3001/pokemons")
-      .then((response) => response.json())
+    return axios
+      .get("http://localhost:3001/pokemons")
+      .then((response) => response.data)
       .then((r) => dispatch({ type: GET_POKEMONS, payload: r }))
       .catch((err) => {
         return err;
@@ -20,8 +23,9 @@ export function getPokes() {
 }
 export function searchPoke(name) {
   return (dispatch) => {
-    return fetch(`http://localhost:3001/pokemons?name=${name}`)
-      .then((response) => response.json())
+    return axios
+      .get(`http://localhost:3001/pokemons?name=${name}`)
+      .then((response) => response.data)
       .then((r) => dispatch({ type: SEARCH_POKE, payload: r }))
       .catch((err) => {
         return alert("not found");
@@ -42,8 +46,9 @@ export function filterTypes(payload) {
 }
 export function getDetail(id) {
   return (dispatch) => {
-    return fetch(`http://localhost:3001/pokemons/${id}`)
-      .then((response) => response.json())
+    return axios
+      .get(`http://localhost:3001/pokemons/${id}`)
+      .then((response) => response.data)
       .then((r) => dispatch({ type: GET_DETAIL, payload: r }))
       .catch((err) => {
         return err;
@@ -53,10 +58,8 @@ export function getDetail(id) {
 export function getTypes() {
   return async (dispatch) => {
     try {
-      const result = await fetch("http://localhost:3001/types");
-      //result.json();
-      const r = await result.json();
-      //console.log(r);
+      const result = await axios.get("http://localhost:3001/types");
+      const r = await result.data;
       return dispatch({ type: GET_TYPES, payload: r });
     } catch (err) {
       return err;

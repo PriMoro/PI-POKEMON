@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -79,12 +80,10 @@ function CreatePokemon() {
 
   function handleSelect1(e) {
     setInput({ ...input, type: [e.target.value] });
-    //console.log("1" + input.type);
   }
 
   function handleSelect2(e) {
     setInput({ ...input, type: [...input.type, e.target.value] });
-    //console.log("2" + input.type);
   }
 
   function handleDelete(t) {
@@ -94,19 +93,13 @@ function CreatePokemon() {
   function handleSubmit(e) {
     e.preventDefault();
     alert("Pokemon was created successfully");
-    fetch("http://localhost:3001/pokemons", {
-      method: "POST",
-      body: JSON.stringify(input),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
+    axios
+      .post("http://localhost:3001/pokemons", input)
+      .then((response) => response.data)
       .then((data) => {
         window.alert(data);
       })
       .catch((error) => console.error("Error:", error));
-
     setInput({
       name: "",
       img: "",
