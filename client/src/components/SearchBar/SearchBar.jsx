@@ -8,7 +8,7 @@ function toValidateName(name) {
     errors.name = "This field is required";
   } else if (!/^[a-z]{3,15}$/.test(name)) {
     errors.name =
-      "The name must be an avaliable name with only 3 to 10 minuscule letters. ";
+      "The name must be an avaliable name with only 3 to 10 lowercase letters. ";
   }
   return errors;
 }

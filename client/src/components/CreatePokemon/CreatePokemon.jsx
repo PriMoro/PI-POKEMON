@@ -10,7 +10,7 @@ function toValidateInput(input) {
     errors.name = "This field is required";
   } else if (!/^[a-z]{4,10}$/.test(input.name)) {
     errors.name =
-      "The name must be an avaliable name with only 4 to 10 letters. ";
+      "The name must be an avaliable name with only 4 to 10 lowecase letters. ";
   } else if (!input.img) {
     errors.img = "This field is required";
   } else if (
